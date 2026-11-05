@@ -40,5 +40,6 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/devops-project:latest
             sudo docker stop app-container || true
             sudo docker rm app-container || true
-            sudo fuser -k 80/tcp || true
+            sudo docker stop $(sudo docker ps -q --filter "publish=80") || true
+            sudo docker rm $(sudo docker ps -aq --filter "publish=80") || true
             sudo docker run -d --name app-container -p 80:8080 ${{ secrets.DOCKER_USERNAME }}/devops-project:latest
