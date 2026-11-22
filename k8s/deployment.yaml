@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: jenkins-demo
-          image: jenkins-demo:latest
-          imagePullPolicy: IfNotPresent
+          image: jenkins-demo:v1
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
